@@ -1,0 +1,160 @@
+[gd_scene load_steps=13 format=3 uid="uid://csi4u8fmc5rwr"]
+
+[ext_resource type="Script" uid="uid://ub01aodnmmk2" path="res://addons/script_region_folder/script_region_folder/srf_scripts/srf_script_misc/srf_custom_node.gd" id="1_kpa78"]
+[ext_resource type="Texture2D" uid="uid://3takbcou0cap" path="res://addons/script_region_folder/script_region_folder/srf_icons/godot_CodeRegionFoldDownArrow.svg" id="2_rcbu0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gsr37"]
+bg_color = Color(1, 1, 1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77qkf"]
+bg_color = Color(0.286275, 0.611765, 0.909804, 0.1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.8, 0.8, 0.2)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5e3v2"]
+bg_color = Color(1, 1, 1, 0.5)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rcbu0"]
+bg_color = Color(0.25098, 0.537255, 0.8, 0.101961)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.8, 0.8, 0.4)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kpa78"]
+bg_color = Color(0.251, 0.537, 0.8, 0.1)
+border_color = Color(0.8, 0.8, 0.8, 0.3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_357nd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t33mg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rxvnr"]
+bg_color = Color(1, 1, 1, 0.2)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7omi4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_120qy"]
+
+[node name="SRFCustomNodeChild" type="MarginContainer"]
+theme_override_constants/margin_top = -1
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = -2
+script = ExtResource("1_kpa78")
+
+[node name="M_bg" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+
+[node name="BGNodePanel" type="Panel" parent="M_bg"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_gsr37")
+
+[node name="FocusPanel" type="Panel" parent="M_bg"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_77qkf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="s" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="VLinePanel" type="Panel" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5e3v2")
+
+[node name="HTotal" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="M_left" type="MarginContainer" parent="HBoxContainer/HTotal"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_stretch_ratio = 0.4
+
+[node name="H_left" type="HBoxContainer" parent="HBoxContainer/HTotal/M_left"]
+layout_mode = 2
+
+[node name="s2" type="Control" parent="HBoxContainer/HTotal/M_left/H_left"]
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+
+[node name="FoldTextureRect" type="TextureRect" parent="HBoxContainer/HTotal/M_left/H_left"]
+unique_name_in_owner = true
+self_modulate = Color(0.577267, 0.42943, 0.640625, 1)
+custom_minimum_size = Vector2(14, 0)
+layout_mode = 2
+texture = ExtResource("2_rcbu0")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="LineLabel" type="Label" parent="HBoxContainer/HTotal/M_left/H_left"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "10000"
+
+[node name="FoldButton" type="Button" parent="HBoxContainer/HTotal/M_left"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxFlat_rcbu0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kpa78")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_357nd")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_t33mg")
+toggle_mode = true
+
+[node name="SplitPanel" type="Panel" parent="HBoxContainer/HTotal"]
+custom_minimum_size = Vector2(1, 14)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_rxvnr")
+
+[node name="M_right" type="MarginContainer" parent="HBoxContainer/HTotal"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="H_right" type="HBoxContainer" parent="HBoxContainer/HTotal/M_right"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="HBoxContainer/HTotal/M_right/H_right"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "SetRegionName"
+text_overrun_behavior = 3
+
+[node name="NameButton" type="Button" parent="HBoxContainer/HTotal/M_right"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxFlat_rcbu0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kpa78")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7omi4")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_120qy")
+alignment = 0

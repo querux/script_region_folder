@@ -1,0 +1,142 @@
+[gd_scene load_steps=13 format=3 uid="uid://cotk3pirml10h"]
+
+[ext_resource type="Script" uid="uid://bmscj817qd537" path="res://addons/script_region_folder/srf_scripts/srf_script_misc/region_folder_dock.gd" id="1_120qy"]
+[ext_resource type="PackedScene" uid="uid://dnifirfxonqr6" path="res://addons/script_region_folder/srf_scenes/icon_warninng.tscn" id="2_61t7i"]
+[ext_resource type="PackedScene" uid="uid://06a14xsglwl4" path="res://addons/script_region_folder/srf_scenes/default_button.tscn" id="2_t33mg"]
+[ext_resource type="Texture2D" uid="uid://bd6jp2f2mdw68" path="res://addons/script_region_folder/srf_icons/godot_Slot.svg" id="3_357nd"]
+[ext_resource type="Texture2D" uid="uid://do0hh6pskqrwr" path="res://addons/script_region_folder/srf_icons/godot_Loop.svg" id="4_61t7i"]
+[ext_resource type="Script" uid="uid://c8be7ppfuxuyq" path="res://addons/script_region_folder/srf_scripts/srf_script_misc/srf_menu_misc/srf_button_refresh_manual.gd" id="5_61t7i"]
+[ext_resource type="Script" uid="uid://dh2g12r5my3j4" path="res://addons/script_region_folder/srf_scripts/srf_script_misc/srf_menu_misc/srf_button_focus.gd" id="5_rw3kf"]
+[ext_resource type="Script" uid="uid://bgyj2yrx7mich" path="res://addons/script_region_folder/srf_scripts/srf_script_misc/srf_menu_misc/srf_button_refresh_auto.gd" id="6_3eef5"]
+[ext_resource type="Texture2D" uid="uid://b1f7348mcic0y" path="res://addons/script_region_folder/srf_icons/godot_Signals.svg" id="8_nhpvu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vx7yk"]
+bg_color = Color(1, 1, 1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t33mg"]
+bg_color = Color(1, 1, 1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_357nd"]
+bg_color = Color(1, 1, 1, 1)
+anti_aliasing = false
+
+[node name="RegionFolderDock" type="HSplitContainer"]
+custom_minimum_size = Vector2(80, 0)
+offset_right = 164.0
+offset_bottom = 293.0
+size_flags_vertical = 3
+theme_override_constants/minimum_grab_thickness = 10
+drag_area_margin_end = 32
+script = ExtResource("1_120qy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="M_menu" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="BGMenuPanel" type="Panel" parent="VBoxContainer/M_menu"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vx7yk")
+
+[node name="MenuContainer" type="HBoxContainer" parent="VBoxContainer/M_menu"]
+layout_mode = 2
+
+[node name="IconWarninng" parent="VBoxContainer/M_menu/MenuContainer" instance=ExtResource("2_61t7i")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="FocusButton" parent="VBoxContainer/M_menu/MenuContainer" instance=ExtResource("2_t33mg")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 1
+tooltip_text = "Focus Button:
+Tip: If true, selecting a region name focuses the editor on that line."
+icon = ExtResource("3_357nd")
+expand_icon = false
+script = ExtResource("5_rw3kf")
+
+[node name="AutoRefreshButton" parent="VBoxContainer/M_menu/MenuContainer" instance=ExtResource("2_t33mg")]
+unique_name_in_owner = true
+self_modulate = Color(0.286, 0.612, 0.91, 1)
+layout_mode = 2
+size_flags_horizontal = 1
+tooltip_text = "Auto Refresh Button:
+Tip: Automatically updates the region list on code changes. (May be slightly slower.)"
+icon = ExtResource("8_nhpvu")
+expand_icon = false
+script = ExtResource("6_3eef5")
+
+[node name="ManualRefreshButton" parent="VBoxContainer/M_menu/MenuContainer" instance=ExtResource("2_t33mg")]
+unique_name_in_owner = true
+self_modulate = Color(1, 0.95, 0.229, 1)
+custom_minimum_size = Vector2(36, 8)
+layout_mode = 2
+size_flags_horizontal = 8
+tooltip_text = "Refresh Button:
+Tip: Refreshes regions of the selected class."
+toggle_mode = false
+icon = ExtResource("4_61t7i")
+expand_icon = false
+script = ExtResource("5_61t7i")
+
+[node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/minimum_grab_thickness = 12
+split_offset = 950
+
+[node name="M_top" type="MarginContainer" parent="VBoxContainer/VSplitContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BGPanel_top" type="Panel" parent="VBoxContainer/VSplitContainer/M_top"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t33mg")
+
+[node name="ScrollContainer_top" type="ScrollContainer" parent="VBoxContainer/VSplitContainer/M_top"]
+custom_minimum_size = Vector2(80, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VContainer_top" type="VBoxContainer" parent="VBoxContainer/VSplitContainer/M_top/ScrollContainer_top"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxComponentTop" type="VBoxContainer" parent="VBoxContainer/VSplitContainer/M_top/ScrollContainer_top/VContainer_top"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="M_bot" type="MarginContainer" parent="VBoxContainer/VSplitContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+
+[node name="BGPanel_bot" type="Panel" parent="VBoxContainer/VSplitContainer/M_bot"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_357nd")
+
+[node name="ScrollContainer_bot" type="ScrollContainer" parent="VBoxContainer/VSplitContainer/M_bot"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 150)
+layout_mode = 2
+
+[node name="VContainer_bot" type="VBoxContainer" parent="VBoxContainer/VSplitContainer/M_bot/ScrollContainer_bot"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxComponentBot" type="VBoxContainer" parent="VBoxContainer/VSplitContainer/M_bot/ScrollContainer_bot/VContainer_bot"]
+unique_name_in_owner = true
+layout_mode = 2

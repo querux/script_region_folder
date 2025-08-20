@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://06a14xsglwl4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xt0je"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36y2e"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.8, 0.8, 0.7)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jneny"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rov08"]
+
+[node name="DefaultButton" type="Button"]
+custom_minimum_size = Vector2(8, 8)
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.05
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 0.8)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.7)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.6)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.6)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xt0je")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_36y2e")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jneny")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rov08")
+toggle_mode = true
+icon_alignment = 1
+expand_icon = true

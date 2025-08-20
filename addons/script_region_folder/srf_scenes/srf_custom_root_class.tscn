@@ -1,0 +1,111 @@
+[gd_scene load_steps=11 format=3 uid="uid://b4s147xlw00a1"]
+
+[ext_resource type="Script" uid="uid://bwxkqk5et5gc1" path="res://addons/script_region_folder/script_region_folder/srf_scripts/srf_script_misc/srf_custom_class_node.gd" id="1_2eqq1"]
+[ext_resource type="Texture2D" uid="uid://b5318g1dsn1gi" path="res://addons/script_region_folder/script_region_folder/srf_icons/godot_GuiTreeArrowDown.svg" id="2_660f6"]
+[ext_resource type="Texture2D" uid="uid://iowkrjtb0dx3" path="res://addons/script_region_folder/script_region_folder/srf_icons/godot_Script.svg" id="3_urrf2"]
+[ext_resource type="PackedScene" uid="uid://06a14xsglwl4" path="res://addons/script_region_folder/script_region_folder/srf_scenes/default_button.tscn" id="4_0nygi"]
+[ext_resource type="Texture2D" uid="uid://tuuuro8qhls" path="res://addons/script_region_folder/script_region_folder/srf_icons/godot_TripleBar.svg" id="5_svyuc"]
+[ext_resource type="Script" uid="uid://c5mh5aer7m18d" path="res://addons/script_region_folder/script_region_folder/srf_scripts/srf_script_misc/srf_menu_misc/srf_button_allfold.gd" id="6_660f6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2eqq1"]
+bg_color = Color(0.25098, 0.537255, 0.8, 0.101961)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.8, 0.8, 0.4)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_660f6"]
+bg_color = Color(0.251, 0.537, 0.8, 0.1)
+border_color = Color(0.8, 0.8, 0.8, 0.3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7omi4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_120qy"]
+
+[node name="SRFCustomRootClass" type="MarginContainer"]
+size_flags_horizontal = 3
+script = ExtResource("1_2eqq1")
+
+[node name="BGPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="HTotal" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="M_left" type="MarginContainer" parent="HTotal"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+
+[node name="H_left" type="HBoxContainer" parent="HTotal/M_left"]
+layout_mode = 2
+
+[node name="s" type="Control" parent="HTotal/M_left/H_left"]
+layout_mode = 2
+
+[node name="ArrowTextureRect" type="TextureRect" parent="HTotal/M_left/H_left"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_660f6")
+stretch_mode = 3
+
+[node name="IconControl" type="Control" parent="HTotal/M_left/H_left"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="ScriptTextureRect" type="TextureRect" parent="HTotal/M_left/H_left/IconControl"]
+unique_name_in_owner = true
+self_modulate = Color(0.976471, 0.431373, 0.509804, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 2.5
+offset_top = -6.0
+offset_right = 18.5
+offset_bottom = 10.0
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_urrf2")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="NameLabel" type="Label" parent="HTotal/M_left/H_left"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "SetClassName"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="NameButton" type="Button" parent="HTotal/M_left"]
+unique_name_in_owner = true
+self_modulate = Color(0.68, 0.46, 0.77, 1)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_2eqq1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_660f6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7omi4")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_120qy")
+alignment = 0
+
+[node name="AllFoldButton" parent="HTotal" instance=ExtResource("4_0nygi")]
+unique_name_in_owner = true
+self_modulate = Color(0.606943, 0.323816, 0.613281, 1)
+custom_minimum_size = Vector2(36, 8)
+layout_mode = 2
+size_flags_horizontal = 1
+icon = ExtResource("5_svyuc")
+script = ExtResource("6_660f6")
