@@ -69,7 +69,7 @@ By clicking the class name in the region folder, you can jump to the beginning o
 
 You can expand or collapse a region by clicking the fold icon.
 
-![image]()
+![image](addon_images/image_r4.png)
 
 <br>
 <br>
@@ -97,6 +97,7 @@ You can expand or collapse a region by clicking the fold icon.
 > If you change the Set Position, a restart of the addon is required.
 
 <br>
+<br>
 
 
 
@@ -110,6 +111,12 @@ You can expand or collapse a region by clicking the fold icon.
 
 ![image](addon_images/region_folder_p1.png)
 
+
+> [!note]
+> When the Set Position is configured from LEFT_UL to RIGHT_BR, it will be placed in the Dock.
+>
+> When the Set Position is configured from CODE_LL to CODE_RR, it will be placed on both sides of the ScriptEditor.
+
 <br>
 
 
@@ -118,9 +125,9 @@ You can expand or collapse a region by clicking the fold icon.
 
 > [!tip]
 >
-> ### When jumping to a selected region, turn ON the [ Focus Button ]
+> When jumping to a selected region, turn ON the [ Focus Button ]
 >
-> ### If the regions are not displayed, press the [ Manual Refresh button ]
+> If the regions are not displayed, press the [ Manual Refresh button ]
 
 <br>
 <br>
