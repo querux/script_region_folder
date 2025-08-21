@@ -37,6 +37,7 @@ var _time: float = 0.0
 
 var _is_resized: bool = false
 var _is_initial_load: bool = true
+var _is_once_call: bool = false
 
 
 ##:: setup
@@ -106,7 +107,8 @@ func _exit_tree() -> void:
 func _process(_delta: float) -> void:
 	_time += _delta
 
-	if _time > 0.8:
+	if not _is_once_call and _time > 0.8:
+		_is_once_call = true
 		_loading_values()
 
 	if _time > 3.0:
@@ -473,10 +475,10 @@ func _loading_values() -> void:
 		_dock_main._vsplit.split_offset = __c._setup_project._get_project_settings_dock_bot_size()
 
 	match _dock_pos:
-		9:
+		9: ## LR
 			if __c._saveload_utility._has_conf_data("srf_plugin", "sc_list_size_x"):
 				_sc_list_vsplit.size.x = \
-				__c._saveload_utility._get_conf_data_value("srf", "sc_list_size_x")
+				__c._saveload_utility._get_conf_data_value("editor", "script_split_offset")
 
 		10: ## RL
 			if __c._saveload_utility._has_conf_data("srf_plugin", "sc_split_offset"):
