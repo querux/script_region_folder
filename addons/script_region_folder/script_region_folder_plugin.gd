@@ -9,7 +9,7 @@ var _dock_main: ScriptRegionFolderDock
 var _dock_name: String = "RegionFolder"
 
 ## other_plugin
-var _sc_multi_plus: ScriptMultiPlusDock
+var _sc_multi_plus: MarginContainer
 
 """ class """
 var __c: SRFClassManager
@@ -275,11 +275,14 @@ func _get_window_layout(_conf: ConfigFile) -> void:
 		return
 	__c._saveload_utility._conf_saved_get_window_layout(_conf)
 
-func _get_sc_multi_plus_plugin() -> ScriptMultiPlusDock:
+func _get_sc_multi_plus_plugin() -> MarginContainer:
 	if EditorInterface.is_plugin_enabled("script_multi_plus"):
 		for child in _tab_container_parent.get_children():
-			if child is ScriptMultiPlusDock:
-				return child
+			var _sc := child.get_script()
+			var _sc_gname: StringName = _sc.get_global_name()
+			if _sc != null:
+				if _sc_gname == &"ScriptMultiPlusDock":
+					return child
 	return null
 
 func _exist_plugin_handle() -> void:
