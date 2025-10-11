@@ -176,8 +176,9 @@ func _on_button_pressed() -> void:
 			_store_code_edit.set_caret_line(_pressed_data[0] + __c._setup_settings._categ_offset)
 			_store_code_edit.center_viewport_to_caret()
 		"":
-			_store_code_edit.set_caret_line(_pressed_data[0] + round(__c._setup_settings._categ_offset * 0.5))
-			_store_code_edit.center_viewport_to_caret()
+			if not _pressed_data.is_empty():
+				_store_code_edit.set_caret_line(_pressed_data[0] + round(__c._setup_settings._categ_offset * 0.5))
+				_store_code_edit.center_viewport_to_caret()
 
 #endregion
 ################################################################################

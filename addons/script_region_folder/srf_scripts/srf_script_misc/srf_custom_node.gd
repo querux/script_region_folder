@@ -64,7 +64,7 @@ func emit_is_pressed(_signal: Signal, _data_arr: Array) -> void:
 #region _set_ready
 
 func _ready() -> void:
-	if __c._setup_settings != null:
+	if __c != null:
 		_set_init_font_size()
 		_set_ready_signal()
 		_is_visible_focus_panel(false)

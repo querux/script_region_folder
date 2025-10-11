@@ -66,7 +66,6 @@ func connect_drag_ended(_split: SplitContainer, _on_drag_ended: Callable) -> voi
 	_split.drag_ended.connect(_on_drag_ended)
 
 #endregion
-##::
 
 
 

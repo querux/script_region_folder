@@ -1,14 +1,14 @@
 [gd_scene load_steps=13 format=3 uid="uid://csi4u8fmc5rwr"]
 
-[ext_resource type="Script" uid="uid://ub01aodnmmk2" path="res://addons/script_region_folder/script_region_folder/srf_scripts/srf_script_misc/srf_custom_node.gd" id="1_kpa78"]
-[ext_resource type="Texture2D" uid="uid://3takbcou0cap" path="res://addons/script_region_folder/script_region_folder/srf_icons/godot_CodeRegionFoldDownArrow.svg" id="2_rcbu0"]
+[ext_resource type="Script" uid="uid://ub01aodnmmk2" path="res://addons/script_region_folder/srf_scripts/srf_script_misc/srf_custom_node.gd" id="1_kpa78"]
+[ext_resource type="Texture2D" uid="uid://3takbcou0cap" path="res://addons/script_region_folder/srf_icons/godot_CodeRegionFoldDownArrow.svg" id="2_rcbu0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gsr37"]
 bg_color = Color(1, 1, 1, 1)
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77qkf"]
-bg_color = Color(0.286275, 0.611765, 0.909804, 0.1)
+bg_color = Color(0.286275, 0.611765, 0.909804, 0.22)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1

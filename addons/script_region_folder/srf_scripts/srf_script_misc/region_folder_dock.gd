@@ -24,6 +24,7 @@ var _store_button: Button
 """ focus """
 var _store_region_dict: Dictionary
 
+var _caret_changed_border: int = 50
 var _scroll_counter: int = 0
 
 var _is_saving: bool = false
@@ -97,7 +98,6 @@ func _notification(what: int) -> void:
 
 func _ready() -> void:
 	if _plugin != null:
-		#_init_bg_color(Color.WHITE)
 		_setup_buttons()
 		_set_initialize()
 		_set_ready_signal()
@@ -211,11 +211,12 @@ func _get_code_edit() -> CodeEdit:
 	return null
 
 func _get_list_hide_button(_code_edit: CodeEdit) -> void:
-	var _parent := _code_edit.get_parent()
-	if _parent != null:
-		_store_button = __c._setup_utility._find_get_sc_list_button(_parent)
-	if _store_button != null:
-		_check_is_connect_button(_store_button, "connect")
+	if _code_edit != null:
+		var _parent := _code_edit.get_parent()
+		if _parent != null:
+			_store_button = __c._setup_utility._find_get_sc_list_button(_parent)
+		if _store_button != null:
+			_check_is_connect_button(_store_button, "connect")
 
 #endregion
 ################################################################################
@@ -233,6 +234,7 @@ func _region_create() -> void:
 			var _class_name: String = ""
 			var _class_data: Array = []
 			var _region_nums: Array[int] = []
+			var _has_class_name: bool = false
 
 			var _line_count: int = _code_edit.get_line_count()
 
@@ -242,6 +244,7 @@ func _region_create() -> void:
 				if _line_text.begins_with("class_name"):
 					_class_name = _line_text.substr(10).strip_edges()
 					_class_data = [_code_edit, num, _class_name]
+					_has_class_name = true
 
 				if _line_text.begins_with("##::"):
 					var _category_line_num: int = num
@@ -263,6 +266,9 @@ func _region_create() -> void:
 					var _endregion_line_num: int = num
 					_data_arr.push_back(_endregion_line_num)
 					_set_child_adding(_vbox_compo_top, "node_child", _data_arr)
+
+			if not _has_class_name:
+				_class_data = [_code_edit, -1, ""]
 
 			if not _class_data.is_empty():
 				_class_data.push_back(_region_nums)
@@ -354,7 +360,7 @@ func _on_scene_saved(_filepath: String) -> void:
 
 func _on_code_text_changed() -> void:
 	if _is_aute_refresh():
-		_timer_auto_refresh._set_timer_start_increase(2.4, 2, 1, _on_timer_auto_refresh)
+		_timer_auto_refresh._set_timer_start_increase(2.4, 6, 1, _on_timer_auto_refresh)
 		return
 	if not _icon_warninng._is_number_check:
 		if _compare_region_num():
@@ -393,13 +399,13 @@ func _on_timeout_refresh() -> void:
 
 func _on_caret_changed() -> void:
 	if _is_selected_item():
-		_timer_refresh._set_timer_start_auto(0.6, 6, 1, _on_timeout_refresh)
+		_timer_refresh._set_timer_start_auto(0.6, _caret_changed_border, 1, _on_timeout_refresh)
 		#print("on_caret_changed: ")
 
 func _on_timer_auto_refresh() -> void:
 	_timer_auto_refresh._init_timeout_increase()
 	refreshed_region_item()
-	_change_categ_line_color.call_deferred(_categ_num_arr, "categ")
+	#_change_categ_line_color.call_deferred(_categ_num_arr, "categ")
 	#_change_categ_line_color.call_deferred(_reg_num_arr, "reg")
 
 #endregion
@@ -416,7 +422,7 @@ func refreshed_region_item() -> void:
 	_region_create()
 	_icon_warninng._is_visible_icon_warning.call_deferred(false)
 	if _is_selected_item():
-		_timer_refresh._set_timer_start_auto(2.8, 1, 1, _on_timeout_refresh)
+		_timer_refresh._set_timer_start_auto(2.8, 30, 1, _on_timeout_refresh)
 
 func _is_aute_refresh() -> bool:
 	if _auto_refresh_button.button_pressed:
@@ -528,6 +534,10 @@ func _on_gui_input(_event: InputEvent) -> void:
 			_scroll_counter += 1
 			if _scroll_counter % 4 == 0:
 				_focus_handel()
+
+		if _event.pressed and _event.ctrl_pressed and _event.keycode == KEY_S:
+			if _is_selected_item():
+				_timer_refresh._set_timer_start_auto(1.2, 1, 1, _on_timeout_refresh)
 
 	if _store_code_edit.is_dragging_cursor():
 		_scroll_counter += 1
